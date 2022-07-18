@@ -2,8 +2,6 @@ import zipapp
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn import datasets
-from sklearn.ensemble import RandomForestClassifier
 import time
 import random
 from datetime import datetime
