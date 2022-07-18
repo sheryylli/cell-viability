@@ -7,6 +7,7 @@ import random
 from datetime import datetime
 random.seed(datetime.now())
 import random
+import scipy.stats
 import math
 from scipy.stats import spearmanr
 from scipy.stats import pearsonr
