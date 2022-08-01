@@ -1,8 +1,8 @@
-import zipapp
 import streamlit as st
 import pandas as pd
 import numpy as np
 import time
+import scipy
 import random
 from datetime import datetime
 import statistics
