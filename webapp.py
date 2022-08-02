@@ -16,10 +16,10 @@ from random import randint
 #setting up format
 st.write("""
 # Cell Viability and Fold Change""")
-st.write('determining the relationship between cell viability and fold change.')
-st.write(' Protein abundance and cell viability are measure for screens. Cell viability is how many cells are still alive at the time of measuring protein ')
+st.write('This is a webapp to assess correlation between fold change and cell viability in high-throughput screening experiments')
+st.write(' For high throughput screening, an assay (usually assays that measure protein abundance) is needed to detect increases in expression. For typical screens, protein abundance and cell viability are measured. ')
  
-st.write('To interpret screening results, we consider the protein measurement relative to cell viability. These values are then compared to average of controls to calculate a fold change')
+st.write('To interpret the screening results, we consider the protein measurement relative to cell viability. These values are then compared to average of controls (control oligos that should not affect expression of the gene) to calculate a fold change.')
 st.sidebar.header('User Input Parameters')
 sample_size = st.sidebar.slider('sample size', 100, 500, 100)
 relationship = st.sidebar.selectbox("relationship between protein abundance and cell viability?",
