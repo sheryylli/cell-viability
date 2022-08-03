@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
-import scipy
 import random
+import scipy
 from datetime import datetime
 import statistics
 import random
@@ -16,19 +16,21 @@ from random import randint
 #setting up format
 st.write("""
 # Cell Viability and Fold Change""")
-st.write('This is a webapp to assess correlation between fold change and cell viability in high-throughput screening experiments')
-st.write(' For high throughput screening, an assay (usually assays that measure protein abundance) is needed to detect increases in expression. For typical screens, protein abundance and cell viability are measured. ')
+st.write('determining the relationship between cell viability and fold change.')
+st.write(' Protein abundance and cell viability are measure for screens. Cell viability is how many cells are still alive at the time of measuring protein ')
  
-st.write('To interpret the screening results, we consider the protein measurement relative to cell viability. These values are then compared to average of controls (control oligos that should not affect expression of the gene) to calculate a fold change.')
+st.write('To interpret screening results, we consider the protein measurement relative to cell viability. These values are then compared to average of controls to calculate a fold change')
 st.sidebar.header('User Input Parameters')
 sample_size = st.sidebar.slider('sample size', 100, 500, 100)
 relationship = st.sidebar.selectbox("relationship between protein abundance and cell viability?",
             ("Yes", "No"))
 ratio = st.sidebar.slider('ratio (cell viaibility : protein abundance)', 1, 5, 1)
-range_of_viability_values = st.sidebar.slider('range of cell viability values', 1000, 30000, 15000)
+range_of_viability_values = st.sidebar.slider('range of cell viability values', 1000, 5000, 5000)
+lower_bound = st.sidebar.slider('lower end of the cell viability range', 0, 10000, 0)
 variance = st.sidebar.slider('choose a range of noise to be added', 0, 100, 10)
 run = st.selectbox("how many times this will be run",
         (1,10, 100, 1000))
+
 
 def user_input_features():
 #gets the user input features
@@ -36,6 +38,7 @@ def user_input_features():
         'sample size': sample_size,
         'ratio': ratio,
         'range of cell viability values': range_of_viability_values,
+        'lower end of range': lower_bound,
         'range of noise added': variance,
         'relationship' : relationship
         
@@ -47,9 +50,10 @@ df = user_input_features()
 st.subheader('User Input parameters')
 st.write(df)
 
-def randomNumber(range_of_viability_values: int)-> int:
+def randomNumber(range_of_viability_values, lower_bound: int)-> int:
 #gets a random number within range_of_viability_values set by user
-    randNum = random.randint(1, range_of_viability_values)%(range_of_viability_values-1+1)+ variance
+        #lower bound may have to be one
+    randNum = random.randint(lower_bound, range_of_viability_values)+ variance
     return randNum
 
 normalization_value = []
