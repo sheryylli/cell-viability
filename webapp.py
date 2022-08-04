@@ -21,6 +21,7 @@ st.write('Determining the relationship between cell viability and fold change.')
 st.write(' Protein abundance and cell viability are measure for screens. Cell viability is how many cells are still alive at the time of measuring protein ')
  
 st.write('To interpret screening results, we consider the protein measurement relative to cell viability. These values are then compared to average of controls to calculate a fold change')
+
 st.sidebar.header('User Input Parameters')
 sample_size = st.sidebar.slider('Sample size', 100, 500, 100)
 relationship = st.sidebar.selectbox("Relationship between protein abundance and cell viability?",
@@ -91,8 +92,8 @@ def proteinfunction(sample_size : int):
             protein = randomNumber(range_of_viability_values, lower_bound)
         #if there is a relationship, now use the ratio
         if relationship == "Yes":
-            ratio = ratio + gaussian_noise(0.0, math.sqrt(variance))
-            protein = (normalization_value[i]) / ratio
+            newratio = ratio +  gaussian_noise(0.0, math.sqrt(variance))
+            protein = (normalization_value[i]) / newratio
     
         b  = protein / normalization_value[i]
         r_s.append(b)
