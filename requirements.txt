@@ -114,3 +114,4 @@ Werkzeug==2.1.2
 widgetsnbextension==3.6.1
 yfinance==0.1.73
 zipp==3.8.0
+
