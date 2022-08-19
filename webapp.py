@@ -30,7 +30,7 @@ if relationship == "Yes":
     noise_type = st.sidebar.selectbox("Which type of noise will be added", ("Gaussian", "Log normal"))
 range_of_viability_values = st.sidebar.slider('Range of cell viability values', 10000, 30000, 25000)
 lower_bound = st.sidebar.slider('Lower end of the cell viability range', 0, 10000, 0)
-variance = st.sidebar.slider('Choose a range of noise to be added', 0, 100, 10)
+variance = st.sidebar.slider('Choose a range of noise to be added', 0, 500, 10)
 run = st.sidebar.selectbox("How many times this will be run", (1,10, 100, 1000))
 num_controls = st.sidebar.selectbox("How many controls there will be", (1, 10, 100, 1000))
 
@@ -202,11 +202,11 @@ def yes_relationship(sample_size):
 
     for i in range(sample_size):
         #noise added to overall 
-        noise_protein = ( (normalization_value[i]) / ratio) 
-
-        b = (noise_protein / normalization_value[i]) + noise(0.0, variance)
-        while b< 0:
-            b = (noise_protein / normalization_value[i]) + noise(0.0, variance)
+        noise_protein = ( (normalization_value[i]) / ratio) + noise(0.0, variance)
+        while noise_protein< 0:
+            noise_protein = ( (normalization_value[i]) / ratio) + noise(0.0, variance)
+        b = (noise_protein / normalization_value[i]) 
+        
         protein_values.append(noise_protein)
         r_s_noise.append(b)
 
@@ -262,4 +262,5 @@ for i in range(run):
 
 fold_change_values.clear()
 fold_change_values_noise.clear()
+
 
