@@ -27,7 +27,7 @@ sample_size = st.sidebar.slider('Sample size', 100, 500, 100)
 relationship = st.sidebar.selectbox("Relationship between protein abundance and cell viability?",("Yes", "No"))
 if relationship == "Yes":
     ratio = st.sidebar.slider('Ratio (cell viaibility : protein abundance)', 1, 5, 1)
-    noise_type = st.sidebar.selectbox("Which type of noise will be added", ("Gaussian", "Log normal"))
+    noise_type = st.sidebar.selectbox("Which type of noise will be added", ("Gaussian"))
 range_of_viability_values = st.sidebar.slider('Range of cell viability values', 1000, 30000, 25000)
 lower_bound = st.sidebar.slider('Lower end of the cell viability range', 0, 10000, 0)
 variance = st.sidebar.slider('Choose a range of noise to be added', 0, 10000, 10)
@@ -60,8 +60,7 @@ def noise(mu, variance: float)-> float:
     if relationship == "Yes":
         if noise_type == "Gaussian":
             noise = np.random.normal(mu, std, size= None)
-        else:
-            noise = np.random.lognormal(mu, std, size= None)
+        
     if relationship == "No":
          noise = np.random.normal(mu, std, size= None)
     return noise
@@ -262,8 +261,6 @@ for i in range(run):
 
 fold_change_values.clear()
 fold_change_values_noise.clear()
-
-
 
 
 
