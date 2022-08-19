@@ -30,7 +30,7 @@ if relationship == "Yes":
     noise_type = st.sidebar.selectbox("Which type of noise will be added", ("Gaussian", "Log normal"))
 range_of_viability_values = st.sidebar.slider('Range of cell viability values', 10000, 30000, 25000)
 lower_bound = st.sidebar.slider('Lower end of the cell viability range', 0, 10000, 0)
-variance = st.sidebar.slider('Choose a range of noise to be added', 0, 5000, 10)
+variance = st.sidebar.slider('Choose a range of noise to be added', 0, 10000, 10)
 run = st.sidebar.selectbox("How many times this will be run", (1,10, 100, 1000))
 num_controls = st.sidebar.selectbox("How many controls there will be", (1, 10, 100, 1000))
 
@@ -262,6 +262,8 @@ for i in range(run):
 
 fold_change_values.clear()
 fold_change_values_noise.clear()
+
+
 
 
 
