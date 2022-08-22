@@ -1,3 +1,4 @@
-# cell-viability
+# Simulation study to assess correlation between fold change and cell viability in high-throughput screening experiments
 
-This is a webapp for a simulation study to assess the correlation between fold change and cell viability in high-throughput screening experiments
+
+
