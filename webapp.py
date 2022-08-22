@@ -30,7 +30,7 @@ if relationship == "Yes":
     noise_type = st.sidebar.selectbox("Which type of noise will be added", ("Gaussian",))
 range_of_viability_values = st.sidebar.slider('Maximum value of cell viability values', 1000, 30000, 25000)
 lower_bound = st.sidebar.slider('Lower end of the cell viability range', 0, 10000, 0)
-variance = st.sidebar.slider('Choose a range of noise to be added', 0, 10000, 5000)
+variance = st.sidebar.slider('Choose a range of noise (variance) to be added', 0, 10000, 5000)
 run = st.sidebar.selectbox("How many times this will be run", (1,10, 100, 1000))
 num_controls = st.sidebar.selectbox("How many controls there will be", (1, 10, 100, 1000))
 #because theres this awkward thing and there needs to be space at the bottom
