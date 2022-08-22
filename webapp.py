@@ -33,9 +33,17 @@ lower_bound = st.sidebar.slider('Lower end of the cell viability range', 0, 1000
 variance = st.sidebar.slider('Choose a range of noise to be added', 0, 10000, 5000)
 run = st.sidebar.selectbox("How many times this will be run", (1,10, 100, 1000))
 num_controls = st.sidebar.selectbox("How many controls there will be", (1, 10, 100, 1000))
-
+#because theres this awkward thing and there needs to be space at the bottom
+st.sidebar.write("")
+st.sidebar.write("")
 #protein value should never be negative- reject it if its negative and just get a new value thats positive
 
+
+#show onboarding presentation
+#if theres no relationship what type of correlation do we expect
+#linear relationship (yes)
+#no realtionship - always see correlation, doesnt depend on number of controls, negative corr
+#yes relationship- dont see correlation. progressively add more noise, you do see more of a negative correlation
 def user_input_features():
 #gets the user input features
     data = {
@@ -261,6 +269,8 @@ for i in range(run):
 
 fold_change_values.clear()
 fold_change_values_noise.clear()
+
+
 
 
 
