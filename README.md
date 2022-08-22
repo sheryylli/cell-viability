@@ -8,3 +8,8 @@ Assays are used to detect increases in expression, and every experiment includes
 
 For typical screens, protein abundance is considered relative to cell viability to interpret screening results, which are then compared to the average of controls to calculate a fold change. Although there should ideally be no relationship between fold change and cell viability, relationships are seen in differing directions for various genes. This could be a sign of a problem with the assay, but we can use a simulation study to see what correlation to expect when we know there’s not true relationship between cell viability and fold change to help troubleshoot this behavior.
 
+## Code flow
+
+This is an overview of core components/functions:
+
+![alt text](https://github.com/sheryylli/cell-viability/blob/master/images/codeflow.png)
