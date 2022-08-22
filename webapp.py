@@ -153,18 +153,6 @@ def getcorrelations(normalization, fold_change_list):
     return
 
 
-    
-
-    
-#describe methodology
-#if theres no relationship, then do expect a correlation
-#fix the webapp 
-#thursday: focus on report + presentation
-
-
-#as normalization values increase, why are the fold change values so low
-
-#plot showing protein value and normalization value next to fold change plot
 protein_values =[]
 def no_relationship(sample_size : int): 
   
@@ -194,9 +182,9 @@ def no_relationship(sample_size : int):
         fig1 = px.scatter(data2, x = "Normalization value", y = "Protein abundance",
                 title= "Cell viability and protein abundance values")
         st.plotly_chart(fig1)
-        st.header("Fold Change")
+        st.header("Fold Change Plot")
         fig2 = px.scatter(data, x="Normalization value", y="Fold change",
-                title="Fold Change (noise added to only ratio) with noise (normal distribution)")
+                title="Fold Change")
         st.plotly_chart(fig2)
 
     
@@ -243,9 +231,9 @@ def yes_relationship(sample_size):
         fig1 = px.scatter(data, x = "Normalization value", y = "Protein abundance",
                 title= "Cell viability and protein abundance values")
         st.plotly_chart(fig1)
-        st.header("Fold Change")
+        st.header("Fold Change Plot")
         fig3 = px.scatter(data_log, x="Normalization value", y="Fold change",
-                title="Fold Change (noise added to overall value) )")
+                title="Fold Change (noise added to overall value)")
         st.plotly_chart(fig3)
     
     getcorrelations(normalization_value, fold_change_values_noise)
@@ -269,6 +257,8 @@ for i in range(run):
 
 fold_change_values.clear()
 fold_change_values_noise.clear()
+
+
 
 
 
